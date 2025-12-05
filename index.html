@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cozy Corner Cafe</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a cozy, readable look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7; /* Light cream background */
+        }
+        /* Custom style for the fancy headings */
+        .fancy-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        /* Button hover effects */
+        .menu-btn {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- 1. Navigation Bar (Cozy Coffee Theme) -->
+    <header class="bg-amber-900/95 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Cafe Name -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-3xl fancy-heading text-white font-extrabold tracking-wider">
+                        Cafe KC <span class="text-amber-300">☕</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Home</a>
+                    <!-- UPDATED: Links to the Coffee section of the menu page -->
+                    <a href="menu.html#coffee" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Cafe</a>
+                    <!-- UPDATED: Links to the full menu page -->
+                    <a href="menu.html" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Menu</a>
+                    <!-- Contact link remains correct -->
+                    <a href="contact.html" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Contact</a> 
+                </nav>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" class="md:hidden text-amber-200 hover:text-white p-2 rounded-md transition duration-200">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-amber-900/90 shadow-md">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-amber-800 transition duration-200">Home</a>
+                <!-- UPDATED: Links to the Coffee section of the menu page -->
+                <a href="menu.html#coffee" class="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-amber-800 transition duration-200">Cafe</a>
+                <!-- UPDATED: Links to the full menu page -->
+                <a href="menu.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-amber-800 transition duration-200">Menu</a>
+                 <!-- Contact link remains correct -->
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-amber-800 transition duration-200">Contact</a> 
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. Hero Section (Wide Image + CTA) -->
+        <section id="home" class="relative h-[60vh] md:h-[80vh] overflow-hidden">
+            <!-- Background Image -->
+            <!-- ********* START IMAGE REPLACEMENT HERE ********* -->
+            <!-- Replace the 'src' value with your image path (e.g., images/cafe-interior.jpg) -->
+            <img src="images/hero.png" 
+                 alt="A cozy, wide shot of a cafe interior with warm lighting."
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.onerror=null; this.src='https://placehold.co/1920x800/d7ccc8/5d4037?text=Cafe+Interior';"
+            >
+            <!-- ********* END IMAGE REPLACEMENT HERE ********* -->
+            
+            <!-- Overlay and Content -->
+            <div class="absolute inset-0 bg-stone-900/40 flex items-center justify-center">
+                <div class="text-center p-6 bg-white/70 backdrop-blur-sm rounded-xl shadow-2xl max-w-xl mx-auto">
+                    <!-- Text: Sip, Savor, Enjoy -->
+                    <h1 class="text-5xl md:text-7xl fancy-heading text-amber-900 mb-4 tracking-tighter">
+                        Sip, Savor, Enjoy
+                    </h1>
+                    <!-- Subtext -->
+                    <p class="text-lg md:text-xl text-stone-700 mb-8 font-light italic">
+                        The perfect blend of cozy atmosphere and handcrafted deliciousness.
+                    </p>
+                    
+                    <!-- Buttons: Full Menu & Order Now -->
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <!-- UPDATED: Full Menu CTA links to the full menu page -->
+                        <a href="menu.html" class="menu-btn px-8 py-3 bg-amber-900 text-white text-lg font-semibold rounded-full hover:bg-amber-800 transition duration-300">
+                            Full Menu
+                        </a>
+                        <!-- UPDATED: Order Now CTA links to the full menu page (as a direct action) -->
+                        <a href="contact.html" class="menu-btn px-8 py-3 bg-amber-500 text-amber-900 text-lg font-semibold rounded-full hover:bg-amber-400 transition duration-300">
+                            Order Now!
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Featured Items Section (Grid/Cards) -->
+        <section id="menu-preview" class="py-16 md:py-24 bg-stone-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title -->
+                <h2 class="text-4xl md:text-5xl fancy-heading text-center text-amber-900 mb-12">
+                    Featured Items
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Item 1: Cafe -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden menu-btn">
+                        <!-- ********* START IMAGE REPLACEMENT HERE ********* -->
+                        <!-- Replace the 'src' value with your image path (e.g., images/signature-blend.jpg) -->
+                        <img src="images/coffeecup.png" 
+                             alt="A perfect latte art coffee" 
+                             class="w-full h-48 object-cover transition duration-500 hover:scale-[1.03]"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/8d6e63/ffffff?text=Cafe';"
+                        >
+                        <!-- ********* END IMAGE REPLACEMENT HERE ********* -->
+                        <div class="p-6">
+                            <h3 class="text-2xl fancy-heading text-amber-900 mb-2">The Signature Blend</h3>
+                            <p class="text-stone-600 mb-4">Our slow-roasted beans create a rich, smooth flavor profile you won't find anywhere else. Try it as a Latte or a Cappuccino!</p>
+                            <!-- UPDATED: Links to the Coffee section of the menu page -->
+                            <a href="menu.html#coffee" class="text-amber-700 font-semibold hover:text-amber-900 transition duration-200">Explore Coffee &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Pie -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden menu-btn">
+                        <!-- ********* START IMAGE REPLACEMENT HERE ********* -->
+                        <!-- Replace the 'src' value with your image path (e.g., images/classic-pie.jpg) ********* -->
+                        <img src="images/lemonpie.png" 
+                             alt="A delicious slice of warm pie" 
+                             class="w-full h-48 object-cover transition duration-500 hover:scale-[1.03]"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/c7a45e/5d4037?text=Pie';"
+                        >
+                        <!-- ********* END IMAGE REPLACEMENT HERE ********* -->
+                        <div class="p-6">
+                            <h3 class="text-2xl fancy-heading text-amber-900 mb-2">Grandma's Classic Pie</h3>
+                            <p class="text-stone-600 mb-4">Made with fresh, seasonal ingredients and a flaky, buttery crust. The perfect sweet treat to pair with your coffee.</p>
+                            <!-- UPDATED: Links to the Pastries section of the menu page -->
+                            <a href="menu.html#pastries" class="text-amber-700 font-semibold hover:text-amber-900 transition duration-200">See All Pies &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Muffin -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden menu-btn">
+                        <!-- ********* START IMAGE REPLACEMENT HERE ********* -->
+                        <!-- Replace the 'src' value with your image path (e.g., images/morning-muffin.jpg) ********* -->
+                        <img src="images/muffin.png" 
+                             alt="A fresh baked blueberry muffin" 
+                             class="w-full h-48 object-cover transition duration-500 hover:scale-[1.03]"
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/bcaaa4/3e2723?text=Muffin';"
+                        >
+                        <!-- ********* END IMAGE REPLACEMENT HERE ********* -->
+                        <div class="p-6">
+                            <h3 class="text-2xl fancy-heading text-amber-900 mb-2">Morning Muffins</h3>
+                            <p class="text-stone-600 mb-4">Baked fresh every morning! Light, fluffy, and bursting with flavor. The best way to start your busy day!</p>
+                            <!-- UPDATED: Links to the Pastries section of the menu page -->
+                            <a href="menu.html#pastries" class="text-amber-700 font-semibold hover:text-amber-900 transition duration-200">Grab a Muffin &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Placeholder for Contact Section (Connects to contact.html) -->
+        <section id="contact" class="py-12 bg-amber-900 text-white text-center">
+            <h2 class="text-3xl fancy-heading mb-4">Ready to Visit?</h2>
+            <p class="text-lg">Find us at 123 Cozy Lane or call us at (555) CAFE-K.C.</p>
+            <!-- DIRECT CALL-TO-ACTION LINK TO contact.html (This was already correct!) -->
+            <a href="contact.html" class="inline-block mt-4 text-amber-200 hover:text-white underline font-medium">Click for Full Directions</a> 
+        </section>
+
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="bg-stone-800 text-white p-4 text-center text-sm">
+        &copy; 2025 Cafe KC. Crafted with love by KC.
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            button.addEventListener('click', () => {
+                // Toggle the 'hidden' class on the mobile menu
+                menu.classList.toggle('hidden');
+            });
+            
+            // Close menu when a link is clicked (for smoother navigation on mobile)
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Check if the link is an internal hash link or an external file link
+                    const isInternalLink = link.getAttribute('href').startsWith('#');
+                    
+                    // Close the menu if it's an internal link OR if it's an external file link
+                    // This ensures the menu closes even when navigating to menu.html or contact.html
+                    if (isInternalLink || link.getAttribute('href').endsWith('.html')) {
+                         menu.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

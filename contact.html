@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us & Location - Cafe KC</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a cozy, readable look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7; /* Light cream background */
+        }
+        /* Custom style for the fancy headings */
+        .fancy-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        /* Specific styling for the map container to ensure aspect ratio */
+        .map-container {
+            position: relative;
+            width: 100%;
+            /* 1:1 aspect ratio for a squared look on desktop */
+            padding-top: 100%; 
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .map-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="text-stone-800">
+
+    <!-- 1. Navigation Bar (Cozy Coffee Theme - Reused from Index) -->
+    <header class="bg-amber-900/95 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Cafe Name -->
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-3xl fancy-heading text-white font-extrabold tracking-wider">
+                        Cafe KC <span class="text-amber-300">☕</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <!-- UPDATED: Home links directly to the index file -->
+                    <a href="index.html" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Home</a>
+                    <!-- UPDATED: Cafe links to the Coffee section on the menu file -->
+                    <a href="menu.html#coffee" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Cafe</a>
+                    <!-- UPDATED: Menu links directly to the menu file -->
+                    <a href="menu.html" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Menu</a>
+                    <a href="#" class="text-lg font-medium text-white transition duration-200">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button (Hamburger) - The mobile menu structure should be added if needed, but keeping as provided for now. -->
+                <button id="mobile-menu-button" class="md:hidden text-amber-200 hover:text-white p-2 rounded-md transition duration-200">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown (Added for completeness and functionality) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-amber-900/90 shadow-md">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-amber-800 transition duration-200">Home</a>
+                <a href="menu.html#coffee" class="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-amber-800 transition duration-200">Cafe</a>
+                <a href="menu.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-amber-800 transition duration-200">Menu</a>
+                <a href="contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-100 hover:bg-amber-800 transition duration-200">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl md:text-6xl fancy-heading text-center text-amber-900 mb-12">
+                Visit Our Cozy Spot
+            </h1>
+
+            <!-- 2. Contact Grid: Info (Left) and Map (Right) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                
+                <!-- LEFT HALF: Information, Directions, Image -->
+                <div class="space-y-8 p-6 bg-white rounded-xl shadow-lg">
+                    
+                    <!-- Location Image -->
+                    <img src="https://placehold.co/600x350/e0e0e0/5d4037?text=Image+of+Our+Cafe" 
+                        alt="Exterior of the Cafe KC location" 
+                        class="w-full h-auto rounded-lg shadow-md"
+                        onerror="this.onerror=null; this.src='https://placehold.co/600x350/e0e0e0/5d4037?text=Cafe+Entrance';"
+                    >
+
+                    <!-- Contact Details -->
+                    <div class="space-y-4">
+                        <h2 class="text-3xl fancy-heading text-amber-900 border-b pb-2">
+                            Contact Details
+                        </h2>
+                        
+                        <div class="flex items-start space-x-3">
+                            <span class="text-amber-700 mt-1">📍</span>
+                            <p class="text-lg">
+                                **Our Location:** 123 Cozy Lane, Downtown District, Metropolis
+                                <br><span class="text-sm text-stone-500">Easily accessible by bus line 5 and 7.</span>
+                            </p>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <span class="text-amber-700 mt-1">📞</span>
+                            <p class="text-lg">
+                                **Phone:** (555) CAFE-K.C.
+                            </p>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <span class="text-amber-700 mt-1">✉️</span>
+                            <p class="text-lg">
+                                **Email:** hello@cafekc.com
+                            </p>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <span class="text-amber-700 mt-1">⏰</span>
+                            <p class="text-lg">
+                                **Hours:** Mon - Sat: 7:00 AM - 6:00 PM <br>
+                                <span class="text-sm text-stone-500">Closed on Sundays</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Directions/How to Get Here -->
+                    <div class="space-y-4">
+                        <h2 class="text-3xl fancy-heading text-amber-900 border-b pb-2">
+                            Getting Here
+                        </h2>
+                        <ul class="list-disc list-inside text-lg text-stone-600 space-y-2 pl-4">
+                            <li>**By Car:** Free parking available behind the building.</li>
+                            <li>**By Transit:** Exit at the 'Downtown Market' stop; we are two blocks south.</li>
+                            <li>**By Foot:** Look for the signature red awning!</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT HALF: Map Location (Squared/Rectangle Space) -->
+                <div class="p-4 bg-white rounded-xl shadow-lg md:sticky md:top-20">
+                    <h2 class="text-3xl fancy-heading text-amber-900 text-center mb-4">
+                        Find Us on the Map
+                    </h2>
+                    
+                    <!-- Map Placeholder Container (Ensures a squared look) -->
+                    <div class="map-container shadow-inner">
+                        <!-- Placeholder for Google Maps Embed -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10000.730335016597!2d-122.3486392!3d47.6080133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490102c7e0c3d9b%3A0x64c9d7d4c22e5e1a!2sPike%20Place%20Market!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                            loading="lazy"
+                            class="map-iframe rounded-lg border-none"
+                            title="Placeholder map of the location"
+                            allowfullscreen=""
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <p class="text-center text-sm text-stone-500 mt-4">
+                        *Note: Placeholder map currently showing Pike Place Market. Replace the iframe `src` with your actual location's embed code!*
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Simple Footer (Reused from Index) -->
+    <footer class="bg-stone-800 text-white p-4 text-center text-sm mt-12">
+        &copy; 2025 Cafe KC. Crafted with love by KC.
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle (Added for consistency) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.querySelector('#mobile-menu-button');
+            const menu = document.querySelector('#mobile-menu');
+
+            // Check if elements exist before adding listeners
+            if (button && menu) {
+                button.addEventListener('click', () => {
+                    // Toggle the 'hidden' class on the mobile menu
+                    menu.classList.toggle('hidden');
+                });
+                
+                // Close menu when a link is clicked
+                menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.add('hidden');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

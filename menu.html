@@ -7,7 +7,7 @@
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom font for a cozy, readable look, matching index.html */
+        /* Custom font for a cozy, readable look */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
         
         body {
@@ -26,6 +26,7 @@
             top: 64px; /* Height of the main navigation bar */
             z-index: 40;
             border-bottom: 1px solid #e7e5e4; /* Stone 200 */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow for lift */
         }
         /* Style for the individual menu item cards */
         .menu-item-card {
@@ -34,6 +35,17 @@
         .menu-item-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 4px, 6px, 0.05);
+        }
+
+        /* === Custom Scrollbar Hide for Carousel === */
+        .scroll-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .scroll-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            /* Added smooth scrolling for touch devices */
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -52,13 +64,9 @@
                 
                 <!-- Desktop Menu -->
                 <nav class="hidden md:flex space-x-8">
-                    <!-- Home link updated -->
                     <a href="index.html#home" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Home</a>
-                    <!-- 'Cafe' link updated to go to the Coffee section of this Menu page -->
                     <a href="menu.html#coffee" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Cafe</a>
-                    <!-- Highlight 'Menu' as the active page, using this page's link -->
                     <a href="menu.html" class="text-lg font-bold text-white transition duration-200 bg-amber-800/50 px-3 py-1 rounded-md">Menu</a>
-                    <!-- Contact link updated -->
                     <a href="contact.html" class="text-lg font-medium text-amber-200 hover:text-white transition duration-200">Contact</a> 
                 </nav>
 
@@ -92,16 +100,24 @@
             </div>
         </section>
 
-        <!-- Menu Sub-Navigation (Sticky Menu Categories) -->
+        <!-- 2. Menu Sub-Navigation (Horizontal Scrolling Carousel for Mobile) -->
         <div class="submenu">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-                <ul class="flex flex-wrap justify-center gap-2 md:gap-4 list-none">
-                    <li><a href="#coffee" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200">☕ Coffee & Espresso</a></li>
-                    <li><a href="#pastries" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200">🥐 Pastries & Sweets</a></li>
-                    <li><a href="#breakfast" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200">🍳 All-Day Breakfast</a></li>
-                    <li><a href="#sandwiches" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200">🥪 Savory Sandwiches</a></li>
-                    <li><a href="#other" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200">🥤 Other Drinks</a></li>
-                </ul>
+            <!-- Max-width container for desktop centering -->
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-3">
+                <!-- SCROLLING CAROUSEL WRAPPER (Mobile solution) -->
+                <!-- overflow-x-auto enables horizontal scroll. whitespace-nowrap forces all list items onto one line. -->
+                <div class="scroll-container flex overflow-x-auto whitespace-nowrap px-4 sm:px-0 pb-1">
+                    <ul class="flex gap-3 md:gap-4 list-none md:justify-center md:flex-wrap w-full">
+                        <!-- flex-shrink-0 prevents items from shrinking on small screens -->
+                        <li class="flex-shrink-0"><a href="#coffee" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200 shadow-sm">☕ Coffee & Espresso</a></li>
+                        <li class="flex-shrink-0"><a href="#pastries" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200 shadow-sm">🥐 Pastries & Sweets</a></li>
+                        <li class="flex-shrink-0"><a href="#breakfast" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200 shadow-sm">🍳 All-Day Breakfast</a></li>
+                        <li class="flex-shrink-0"><a href="#sandwiches" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200 shadow-sm">🥪 Savory Sandwiches</a></li>
+                        <li class="flex-shrink-0"><a href="#other" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200 shadow-sm">🥤 Other Drinks</a></li>
+                        <!-- Added a longer category to ensure the horizontal scroll is visible on mobile -->
+                        <li class="flex-shrink-0"><a href="#seasonal" class="block px-4 py-2 text-sm md:text-base font-semibold rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition duration-200 shadow-sm">🍁 Seasonal Specials</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -113,7 +129,7 @@
                 <h2 class="text-4xl fancy-heading text-amber-900 mb-8 border-b-2 border-amber-300 pb-2">☕ Coffee & Espresso</h2>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Item 1: Latte -->
+                    <!-- Item 1: Latte (Original Item) -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
                         <!-- Image Placeholder -->
                         <img src="images/latte.jpg" alt="Latte with art" 
@@ -129,353 +145,238 @@
                         </div>
                     </div>
 
-                    <!-- Item 2: Cold Brew -->
+                    <!-- Item 2: Cappuccino (Placeholder) -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/cold-brew.jpg" alt="Cold brew coffee in a glass" 
+                        <img src="images/cappuccino.jpg" alt="Cappuccino" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/6d4c41/ffffff?text=CB';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Nitro Cold Brew</h3>
-                                <span class="text-lg font-bold text-amber-700">$6.00</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Slow-steeped for 24 hours, infused with nitrogen for a silky smooth finish.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 3: Cappuccino -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/cappuccino.jpg" alt="Cappuccino with foam" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/d7ccc8/5d4037?text=C';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/6d4c41/ffffff?text=C';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="text-xl font-semibold text-amber-900">Classic Cappuccino</h3>
+                                <span class="text-lg font-bold text-amber-700">$4.90</span>
+                            </div>
+                            <p class="text-stone-600 text-sm">Espresso topped with foamed milk and a dusting of cocoa. Pure, simple bliss.</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Cold Brew (Placeholder) -->
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
+                        <img src="images/coldbrew.jpg" alt="Cold Brew" 
+                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/4e342e/ffffff?text=CB';"
+                        >
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-semibold text-amber-900">Signature Cold Brew</h3>
                                 <span class="text-lg font-bold text-amber-700">$4.50</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Equal parts espresso, steamed milk, and velvety foam. Simple perfection.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4: Americano (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/americano.jpg" alt="Hot Americano" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/616161/ffffff?text=A';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Classic Americano</h3>
-                                <span class="text-lg font-bold text-amber-700">$3.50</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Espresso shots diluted with hot water. Bold, simple, perfect.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 5: Mocha (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/mocha.jpg" alt="Mocha coffee" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/5d4037/ffffff?text=M';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">White Chocolate Mocha</h3>
-                                <span class="text-lg font-bold text-amber-700">$6.50</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Sweet white chocolate, espresso, and steamed milk, topped with whipped cream.</p>
+                            <p class="text-stone-600 text-sm">Steeped for 18 hours for a smooth, less acidic, high-caffeine kick.</p>
                         </div>
                     </div>
                 </div>
             </section>
             
-            <!-- SECTION 2: PASTRIES & SWEETS (Adapted from Desserts) -->
+            <!-- SECTION 2: PASTRIES & SWEETS (Placeholder) -->
             <section id="pastries" class="mb-16 pt-10">
                 <h2 class="text-4xl fancy-heading text-amber-900 mb-8 border-b-2 border-amber-300 pb-2">🥐 Pastries & Sweets</h2>
-                
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Item 1: Croissant -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/croissant.jpg" alt="Flaky croissant" 
+                        <img src="images/croissant.jpg" alt="Almond Croissant" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/fbe9e7/5d4037?text=CR';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/f5e5cc/9d5c0b?text=PC';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Almond Croissant</h3>
-                                <span class="text-lg font-bold text-amber-700">$4.00</span>
+                                <h3 class="text-xl font-semibold text-amber-900">Buttery Almond Croissant</h3>
+                                <span class="text-lg font-bold text-amber-700">$3.80</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Flaky, buttery pastry filled with sweet almond paste and sliced almonds.</p>
+                            <p class="text-stone-600 text-sm">Flaky pastry filled with almond paste and dusted with powdered sugar.</p>
                         </div>
                     </div>
-
-                    <!-- Item 2: Scone -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/scone.jpg" alt="Blueberry scone" 
+                        <img src="images/scone.jpg" alt="Blueberry Scone" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/e6ee9c/5d4037?text=S';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/e6d6c3/9d5c0b?text=PS';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Cranberry-Orange Scone</h3>
+                                <h3 class="text-xl font-semibold text-amber-900">Cranberry Orange Scone</h3>
                                 <span class="text-lg font-bold text-amber-700">$3.50</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Dense, moist scone with zesty orange peel and tart dried cranberries.</p>
+                            <p class="text-stone-600 text-sm">Served warm with a hint of orange zest and a side of clotted cream.</p>
                         </div>
                     </div>
-
-                    <!-- Item 3: Cheesecake (similar to Burger Shop's Dessert Pancake concept) -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/cheesecake.jpg" alt="Slice of New York Cheesecake" 
+                        <img src="images/cake.jpg" alt="Chocolate Cake" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/fff8e1/5d4037?text=CC';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/5c3317/ffffff?text=CC';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">New York Cheesecake</h3>
-                                <span class="text-lg font-bold text-amber-700">$7.00</span>
+                                <h3 class="text-xl font-semibold text-amber-900">Triple Chocolate Chip Cookie</h3>
+                                <span class="text-lg font-bold text-amber-700">$2.90</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Creamy classic served with a drizzle of raspberry reduction or chocolate.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 4: Cookie (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/cookie.jpg" alt="Large chocolate chip cookie" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/d7ccc8/5d4037?text=CK';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Giant Chocolate Chip Cookie</h3>
-                                <span class="text-lg font-bold text-amber-700">$2.50</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Perfectly baked, chewy, and loaded with semi-sweet chocolate chips.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 5: Muffin (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/muffin.jpg" alt="Blueberry muffin" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffecb3/5d4037?text=MU';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Glazed Lemon Poppy Muffin</h3>
-                                <span class="text-lg font-bold text-amber-700">$3.00</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Bright lemon flavor with poppy seeds and a sweet, thin glaze.</p>
+                            <p class="text-stone-600 text-sm">Baked fresh daily—crisp edges and a gooey center.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION 3: ALL-DAY BREAKFAST (Adapted from Plates) -->
+            <!-- SECTION 3: ALL-DAY BREAKFAST (Placeholder) -->
             <section id="breakfast" class="mb-16 pt-10">
                 <h2 class="text-4xl fancy-heading text-amber-900 mb-8 border-b-2 border-amber-300 pb-2">🍳 All-Day Breakfast</h2>
-                
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Item 1: Breakfast Wrap -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/breakfast-wrap.jpg" alt="Breakfast wrap" 
+                        <img src="images/avo_toast.jpg" alt="Avocado Toast" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/f3e5f5/5d4037?text=BW';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/9ccc65/ffffff?text=AT';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Morning Glory Wrap</h3>
+                                <h3 class="text-xl font-semibold text-amber-900">Spicy Avocado Toast</h3>
+                                <span class="text-lg font-bold text-amber-700">$7.00</span>
+                            </div>
+                            <p class="text-stone-600 text-sm">Thick-cut sourdough, mashed avocado, chili flakes, and lime zest.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
+                        <img src="images/omelette.jpg" alt="Omelette" 
+                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffd54f/9d5c0b?text=OM';"
+                        >
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-semibold text-amber-900">The Farmers Omelette</h3>
+                                <span class="text-lg font-bold text-amber-700">$9.50</span>
+                            </div>
+                            <p class="text-stone-600 text-sm">Three eggs, cheddar, spinach, bell peppers, and fresh herbs.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
+                        <img src="images/waffles.jpg" alt="Waffles" 
+                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffb74d/9d5c0b?text=WF';"
+                        >
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-semibold text-amber-900">Maple Pecan Waffles</h3>
                                 <span class="text-lg font-bold text-amber-700">$8.50</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Scrambled eggs, cheddar, black beans, and salsa in a whole wheat tortilla.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 2: Avocado Toast -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/avocado-toast.jpg" alt="Avocado toast with everything bagel seasoning" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/e8f5e9/5d4037?text=AT';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Artisan Avocado Toast</h3>
-                                <span class="text-lg font-bold text-amber-700">$9.00</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Thick-cut sourdough, fresh avocado, chili flakes, and everything bagel seasoning.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 3: Waffles/Pancakes (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/pancakes.jpg" alt="Stack of fluffy pancakes" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/fff3e0/5d4037?text=P';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Fluffy Pancake Stack</h3>
-                                <span class="text-lg font-bold text-amber-700">$7.50</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Three fluffy buttermilk pancakes with seasonal berries and pure maple syrup.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4: Yogurt Parfait (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/parfait.jpg" alt="Yogurt parfait" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/f0f4c3/5d4037?text=Y';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Granola Yogurt Parfait</h3>
-                                <span class="text-lg font-bold text-amber-700">$6.00</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Greek yogurt, local honey, house-made granola, and fresh fruit layers.</p>
+                            <p class="text-stone-600 text-sm">Crispy waffles drizzled with real maple syrup and crunchy pecans.</p>
                         </div>
                     </div>
                 </div>
             </section>
-            
-            <!-- SECTION 4: SAVORY SANDWICHES (Adapted from Burgers) -->
+
+            <!-- SECTION 4: SAVORY SANDWICHES (Placeholder) -->
             <section id="sandwiches" class="mb-16 pt-10">
                 <h2 class="text-4xl fancy-heading text-amber-900 mb-8 border-b-2 border-amber-300 pb-2">🥪 Savory Sandwiches</h2>
-                
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Item 1: Turkey Melt -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/turkey-melt.jpg" alt="Turkey Melt sandwich" 
+                        <img src="images/turkey.jpg" alt="Turkey Club" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffe0b2/5d4037?text=TM';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/90a4ae/ffffff?text=TC';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Smoked Turkey Melt</h3>
-                                <span class="text-lg font-bold text-amber-700">$12.00</span>
+                                <h3 class="text-xl font-semibold text-amber-900">Cafe KC Club</h3>
+                                <span class="text-lg font-bold text-amber-700">$10.00</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Smoked turkey, Swiss cheese, and honey mustard, pressed on focaccia bread.</p>
+                            <p class="text-stone-600 text-sm">Smoked turkey, crispy bacon, lettuce, tomato, and garlic aioli on toasted bread.</p>
                         </div>
                     </div>
-
-                    <!-- Item 2: Veggie Panini -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/veggie-panini.jpg" alt="Veggie panini" 
+                        <img src="images/veggie.jpg" alt="Veggie Wrap" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/c8e6c9/5d4037?text=VP';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/81c784/ffffff?text=VW';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Mediterranean Veggie</h3>
-                                <span class="text-lg font-bold text-amber-700">$11.50</span>
+                                <h3 class="text-xl font-semibold text-amber-900">Mediterranean Veggie Wrap</h3>
+                                <span class="text-lg font-bold text-amber-700">$9.50</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Roasted bell peppers, zucchini, pesto, and fresh mozzarella on grilled ciabatta.</p>
+                            <p class="text-stone-600 text-sm">Hummus, feta, cucumber, olives, and roasted red peppers in a whole-wheat wrap.</p>
                         </div>
                     </div>
-                    
-                    <!-- Item 3: Chicken Salad Sandwich (New) -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/chicken-salad.jpg" alt="Chicken Salad Sandwich" 
+                        <img src="images/grilled_cheese.jpg" alt="Grilled Cheese" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/fce4ec/5d4037?text=CS';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Cranberry Walnut Chicken Salad</h3>
-                                <span class="text-lg font-bold text-amber-700">$10.50</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Our classic chicken salad with walnuts, cranberries, served on multi-grain bread.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4: Grilled Cheese (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/grilled-cheese.jpg" alt="Gourmet Grilled Cheese" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffcdd2/5d4037?text=GC';"
+                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffc107/9d5c0b?text=GC';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
                                 <h3 class="text-xl font-semibold text-amber-900">Gourmet Grilled Cheese</h3>
-                                <span class="text-lg font-bold text-amber-700">$9.00</span>
+                                <span class="text-lg font-bold text-amber-700">$8.00</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Blend of sharp cheddar and provolone on sourdough bread, grilled to perfection.</p>
+                            <p class="text-stone-600 text-sm">Three types of cheese melted to perfection on artisan brioche bread.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION 5: OTHER DRINKS (Adapted from Drinks, focusing on non-coffee) -->
+            <!-- SECTION 5: OTHER DRINKS (Placeholder) -->
             <section id="other" class="mb-16 pt-10">
                 <h2 class="text-4xl fancy-heading text-amber-900 mb-8 border-b-2 border-amber-300 pb-2">🥤 Other Drinks</h2>
-                
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Item 1: Tea -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/hot-tea.jpg" alt="Hot tea cup" 
+                        <img src="https://placehold.co/80x80/7e57c2/ffffff?text=SM" alt="Smoothie" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/b3e5fc/5d4037?text=T';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Artisan Loose Leaf Tea</h3>
+                                <h3 class="text-xl font-semibold text-amber-900">Berry Blast Smoothie</h3>
+                                <span class="text-lg font-bold text-amber-700">$6.50</span>
+                            </div>
+                            <p class="text-stone-600 text-sm">Strawberries, blueberries, banana, and Greek yogurt blended with almond milk.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
+                        <img src="https://placehold.co/80x80/4db6ac/ffffff?text=MT" alt="Iced Tea" 
+                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
+                        >
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-semibold text-amber-900">Fresh Mint Iced Tea</h3>
                                 <span class="text-lg font-bold text-amber-700">$3.00</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Selection of black, green, and herbal teas. Ask for today's special blend!</p>
+                            <p class="text-stone-600 text-sm">Organic black tea steeped with fresh mint leaves and a touch of honey.</p>
                         </div>
                     </div>
-
-                    <!-- Item 2: Fresh Juice -->
                     <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/juice.jpg" alt="Fresh orange juice" 
+                        <img src="https://placehold.co/80x80/ff8a65/ffffff?text=MJ" alt="Orange Juice" 
                              class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffcc80/5d4037?text=J';"
                         >
                         <div class="flex-grow">
                             <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Fresh Pressed Juice</h3>
-                                <span class="text-lg font-bold text-amber-700">$5.00</span>
+                                <h3 class="text-xl font-semibold text-amber-900">Fresh Squeezed Orange Juice</h3>
+                                <span class="text-lg font-bold text-amber-700">$4.00</span>
                             </div>
-                            <p class="text-stone-600 text-sm">Made to order, featuring seasonal fruits and veggies.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 3: Sparkling Water (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/sparkling-water.jpg" alt="Sparkling water bottle" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/e1f5fe/5d4037?text=SW';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Premium Sparkling Water</h3>
-                                <span class="text-lg font-bold text-amber-700">$3.00</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Served chilled with a lemon twist. Pure, crisp, and refreshing.</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4: Hot Chocolate (New) -->
-                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card">
-                        <img src="images/hot-chocolate.jpg" alt="Hot chocolate mug" 
-                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
-                             onerror="this.onerror=null; this.src='https://placehold.co/80x80/d7ccc8/5d4037?text=HC';"
-                        >
-                        <div class="flex-grow">
-                            <div class="flex justify-between items-start mb-1">
-                                <h3 class="text-xl font-semibold text-amber-900">Signature Hot Chocolate</h3>
-                                <span class="text-lg font-bold text-amber-700">$4.50</span>
-                            </div>
-                            <p class="text-stone-600 text-sm">Rich cocoa blend, steamed milk, topped with mini marshmallows.</p>
+                            <p class="text-stone-600 text-sm">Pure, 100% Florida oranges—nothing else added!</p>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- SECTION 6: SEASONAL SPECIALS (Placeholder) -->
+            <section id="seasonal" class="mb-16 pt-10">
+                <h2 class="text-4xl fancy-heading text-amber-900 mb-8 border-b-2 border-amber-300 pb-2">🍁 Seasonal Specials</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl shadow-lg p-4 flex gap-4 menu-item-card border-2 border-red-400">
+                        <img src="https://placehold.co/80x80/f44336/ffffff?text=SP" alt="Pumpkin Spice Latte" 
+                             class="w-20 h-20 object-cover rounded-md flex-shrink-0"
+                        >
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-xl font-semibold text-red-500">Pumpkin Spice Latte</h3>
+                                <span class="text-lg font-bold text-red-600">$6.00</span>
+                            </div>
+                            <p class="text-stone-600 text-sm">Our popular autumn drink with real pumpkin puree and warm spices.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-
     </main>
 
     <!-- Simple Footer (Copied from index.html) -->
@@ -502,7 +403,7 @@
                     const isInternalLink = href.startsWith('#');
                     
                     if (isInternalLink || href === 'menu.html') {
-                         menu.classList.add('hidden');
+                           menu.classList.add('hidden');
                     }
                 });
             });
